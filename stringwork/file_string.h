@@ -6,10 +6,15 @@
 
 void process_file_string(const char* input_filename, const char* output_filename) {
     FILE *input_file = fopen(input_filename, "r");
-    FILE *output_file = fopen(output_filename, "w");
+    if (input_file == NULL) {
+        printf("Ошибка открытия файла для чтения: %s\n", input_filename);
+        return;
+    }
 
-    if (input_file == NULL || output_file == NULL) {
-        printf("Ошибка открытия файла.\n");
+    FILE *output_file = fopen(output_filename, "w");
+    if (output_file == NULL) {
+        printf("Ошибка открытия файла для записи: %s\n", output_filename);
+        fclose(input_file);
         return;
     }
 

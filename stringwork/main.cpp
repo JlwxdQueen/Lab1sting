@@ -2,12 +2,16 @@
 #include "char_array.h"
 #include "c_string.h"
 #include "file_string.h"
+
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 int main() {
-
+    #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
+    #endif
 
     int choice;
     printf("Выберите способ обработки строки:\n");
@@ -34,7 +38,7 @@ int main() {
             break;
         }
         case 3: {
-            process_file_string("D:/Algoth/Lab1string/stringwork/file1.txt", "D:/Algoth/Lab1string/stringwork/file2.txt");
+            process_file_string("../stringwork/file1.txt", "../stringwork/file2.txt");
             break;
         }
         default:
